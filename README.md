@@ -1,6 +1,7 @@
 # Darkmode User
 Darkmode for the websites.  
 Supports [Greasemonkey](https://www.greasespot.net/), [Violentmonkey](https://violentmonkey.github.io/) & [Tampermonkey](https://www.tampermonkey.net/).
+
 Employs [Darkmode.js](https://github.com/sandoche/Darkmode.js) by Sandoche Adittane. 
 
 ## Installing:
