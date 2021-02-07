@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.2
+// @version      1.3
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -14,6 +14,7 @@
 //
 // @include      https://karagarga.in/*
 // @include      https://secret-cinema.pw/*
+// @include      https://forum.doom9.org/*
 //
 // ==/UserScript==
 //
@@ -28,6 +29,8 @@
       -   Return original background in white mode.
 
 1.2   -   Fixed few SC icons.
+
+1.3   -   Added Doom9 site.
 
 ==============================================================================*/
 
@@ -73,6 +76,12 @@ function siteSC() {
   addGlobalStyles('.potwicon {mix-blend-mode: normal}');
 }
 
+function siteDoom9() {
+  addGlobalStyles('img {mix-blend-mode: screen}');
+  addGlobalStyles('#vB_Editor_001_controls img {mix-blend-mode: normal}');
+  addGlobalStyles('#vB_Editor_QR_controls img {mix-blend-mode: normal}');
+}
+
 function siteUnknown() {
   addGlobalStyles('img {mix-blend-mode: screen}');
 }
@@ -107,6 +116,8 @@ function toggleGlobalStyles() {
       siteKG();
     } else if (urlHost == 'secret-cinema.pw') {
       siteSC();
+    } else if (urlHost == 'forum.doom9.org') {
+      siteDoom9()
     } else {
       siteUnknown();
     }
