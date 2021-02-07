@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.1
+// @version      1.2
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -26,6 +26,8 @@
       -   Sites' specific code was split to separate functions.
       -   Much faster switching to darkmode (no waiting for external images/resources).
       -   Return original background in white mode.
+
+1.2   -   Fixed few SC icons.
 
 ==============================================================================*/
 
@@ -67,6 +69,8 @@ function siteSC() {
   addGlobalStyles('.widethin .header .topbar {mix-blend-mode: difference}');
   addGlobalStyles('.torrent_description table tbody tr {mix-blend-mode: difference}');
   addGlobalStyles('#covers #cover_div_0 .brackets {mix-blend-mode: normal}');
+  addGlobalStyles('.wrapicon {mix-blend-mode: normal}');
+  addGlobalStyles('.potwicon {mix-blend-mode: normal}');
 }
 
 function siteUnknown() {
@@ -117,7 +121,7 @@ function removeBackground() {
 }
 
 function addBackground() {
-  if (document.querySelector('.darkmode-background') !== null) { return; } 
+  if (document.querySelector('.darkmode-background') !== null) { return; }
   var backgroundDiv = document.createElement('div');
   backgroundDiv.setAttribute('class', 'darkmode-background');
   document.body.insertBefore(backgroundDiv, document.body.firstChild);
