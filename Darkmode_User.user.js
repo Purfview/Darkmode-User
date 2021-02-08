@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.3
+// @version      1.4
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -15,6 +15,7 @@
 // @include      https://karagarga.in/*
 // @include      https://secret-cinema.pw/*
 // @include      https://forum.doom9.org/*
+// @include      https://greasyfork.org/*
 //
 // ==/UserScript==
 //
@@ -31,6 +32,8 @@
 1.2   -   Fixed few SC icons.
 
 1.3   -   Added Doom9 site.
+
+1.4   -   Added Greasyfork site. Some tweaks for SC and Doom9.
 
 ==============================================================================*/
 
@@ -74,12 +77,40 @@ function siteSC() {
   addGlobalStyles('#covers #cover_div_0 .brackets {mix-blend-mode: normal}');
   addGlobalStyles('.wrapicon {mix-blend-mode: normal}');
   addGlobalStyles('.potwicon {mix-blend-mode: normal}');
+  addGlobalStyles('iframe {mix-blend-mode: screen}');
 }
 
 function siteDoom9() {
   addGlobalStyles('img {mix-blend-mode: screen}');
+  addGlobalStyles('#vB_Editor_QR_cmd_removeformat img, \
+                   #vB_Editor_QR_cmd_bold img, \
+                   #vB_Editor_QR_cmd_italic img, \
+                   #vB_Editor_QR_cmd_underline img, \
+                   #vB_Editor_QR_color_out img \
+                   {mix-blend-mode: normal}');
   addGlobalStyles('#vB_Editor_001_controls img {mix-blend-mode: normal}');
-  addGlobalStyles('#vB_Editor_QR_controls img {mix-blend-mode: normal}');
+  addGlobalStyles('#vB_Editor_001_popup_smilie img, \
+                   #vB_Editor_001_cmd_createlink img, \
+                   #vB_Editor_001_cmd_unlink img, \
+                   #vB_Editor_001_cmd_email img, \
+                   #vB_Editor_001_cmd_insertimage img, \
+                   #vB_Editor_001_cmd_wrap0_quote img, \
+                   #vB_Editor_001_cmd_wrap0_php img \
+                   {mix-blend-mode: screen}');
+}
+
+function siteGreasyfork() {
+  addGlobalStyles('img {mix-blend-mode: screen}');
+  addGlobalStyles('#main-header {mix-blend-mode: difference}');
+  addGlobalStyles('#site-name a img {mix-blend-mode: normal}');
+  addGlobalStyles('#site-name img {mix-blend-mode: normal}');
+  addGlobalStyles('#install-area {mix-blend-mode: difference}');
+  addGlobalStyles('.script-list-ratings span span {mix-blend-mode: difference}');
+  addGlobalStyles('.current {color: #bfbfbf}');
+  addGlobalStyles('#about-user {background-color: transparent}');
+  addGlobalStyles('#about-user h2 {color: #bfbfbf}');
+  addGlobalStyles('#about-user h3 {color: #bfbfbf}');
+  addGlobalStyles('tezt {mix-blend-mode: screen}');
 }
 
 function siteUnknown() {
@@ -117,7 +148,9 @@ function toggleGlobalStyles() {
     } else if (urlHost == 'secret-cinema.pw') {
       siteSC();
     } else if (urlHost == 'forum.doom9.org') {
-      siteDoom9()
+      siteDoom9();
+    } else if (urlHost == 'greasyfork.org') {
+      siteGreasyfork();
     } else {
       siteUnknown();
     }
