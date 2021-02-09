@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.4
+// @version      1.5
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -16,6 +16,8 @@
 // @include      https://secret-cinema.pw/*
 // @include      https://forum.doom9.org/*
 // @include      https://greasyfork.org/*
+//
+// @run-at       document-start
 //
 // ==/UserScript==
 //
@@ -34,6 +36,8 @@
 1.3   -   Added Doom9 site.
 
 1.4   -   Added Greasyfork site. Some tweaks for SC and Doom9.
+
+1.5   -   Script wasn't working with Tampermonkey from v1.1. Fixed!
 
 ==============================================================================*/
 
