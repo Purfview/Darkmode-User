@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.5
+// @version      1.5.1
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -82,6 +82,7 @@ function siteSC() {
   addGlobalStyles('.wrapicon {mix-blend-mode: normal}');
   addGlobalStyles('.potwicon {mix-blend-mode: normal}');
   addGlobalStyles('iframe {mix-blend-mode: screen}');
+  addGlobalStyles('.noty_buttons {mix-blend-mode: difference}');
 }
 
 function siteDoom9() {
@@ -114,7 +115,6 @@ function siteGreasyfork() {
   addGlobalStyles('#about-user {background-color: transparent}');
   addGlobalStyles('#about-user h2 {color: #bfbfbf}');
   addGlobalStyles('#about-user h3 {color: #bfbfbf}');
-  addGlobalStyles('tezt {mix-blend-mode: screen}');
 }
 
 function siteUnknown() {
