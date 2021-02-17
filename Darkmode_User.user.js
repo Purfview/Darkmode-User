@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.5.1
+// @version      1.5.2
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -18,6 +18,7 @@
 // @include      https://greasyfork.org/*
 //
 // @run-at       document-start
+// @noframes
 //
 // ==/UserScript==
 //
@@ -65,6 +66,7 @@ function siteKG() {
     addGlobalStyles('.spoiler {isolation: isolate}');
     addGlobalStyles('.spoiler img {mix-blend-mode: difference}');
     addGlobalStyles('table .clear {isolation: isolate}');
+    addGlobalStyles('#hidethissmilies {mix-blend-mode: difference}');
   }
 }
 
