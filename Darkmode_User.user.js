@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.5.2
+// @version      1.6
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -16,6 +16,7 @@
 // @include      https://secret-cinema.pw/*
 // @include      https://forum.doom9.org/*
 // @include      https://greasyfork.org/*
+// @include      https://www.cinematik.net/*
 //
 // @run-at       document-start
 // @noframes
@@ -40,6 +41,8 @@
 
 1.5   -   Script wasn't working with Tampermonkey from v1.1. Fixed!
 
+1.6   -   Added Tik site.
+
 ==============================================================================*/
 
 
@@ -59,6 +62,7 @@ function siteKG() {
     addGlobalStyles('img {mix-blend-mode: screen}');
     addGlobalStyles('a div img {mix-blend-mode: normal}');
     addGlobalStyles('table .clear {isolation: isolate}');
+    addGlobalStyles('table[cellpadding="10"][bgcolor="red"] {mix-blend-mode: difference}');
   } else {
     addGlobalStyles('img {mix-blend-mode: screen}');
     addGlobalStyles('table .main {isolation: isolate}');
@@ -67,6 +71,8 @@ function siteKG() {
     addGlobalStyles('.spoiler img {mix-blend-mode: difference}');
     addGlobalStyles('table .clear {isolation: isolate}');
     addGlobalStyles('#hidethissmilies {mix-blend-mode: difference}');
+    addGlobalStyles('.outer table[width="750"] {background-color: #f9f9f9}');
+    addGlobalStyles('table[cellpadding="10"][bgcolor="red"] {mix-blend-mode: difference}');
   }
 }
 
@@ -119,6 +125,20 @@ function siteGreasyfork() {
   addGlobalStyles('#about-user h3 {color: #bfbfbf}');
 }
 
+function siteTik() {
+  addGlobalStyles('img {mix-blend-mode: screen}');
+  addGlobalStyles('#menu img {mix-blend-mode: normal}');
+  addGlobalStyles('#menu ul li {background-color: black}');
+  addGlobalStyles('#menu ul li a {color: grey}');
+  addGlobalStyles('.bottom_nav ul {background-color: black}');
+  addGlobalStyles('.msn_img_div1 {mix-blend-mode: screen}');
+  addGlobalStyles('.bottom_nav ul a {color: red}');
+  addGlobalStyles('.pbox_table td img[width="20"] {mix-blend-mode: overlay}');
+  addGlobalStyles('.ri_foto_extra {mix-blend-mode: screen}');
+  addGlobalStyles('.thumbos {mix-blend-mode: screen}');
+  addGlobalStyles('embed {mix-blend-mode: screen}');
+}
+
 function siteUnknown() {
   addGlobalStyles('img {mix-blend-mode: screen}');
 }
@@ -153,6 +173,8 @@ function toggleGlobalStyles() {
       siteKG();
     } else if (urlHost == 'secret-cinema.pw') {
       siteSC();
+    } else if (urlHost == 'www.cinematik.net') {
+      siteTik();
     } else if (urlHost == 'forum.doom9.org') {
       siteDoom9();
     } else if (urlHost == 'greasyfork.org') {
