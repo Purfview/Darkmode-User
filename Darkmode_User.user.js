@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.6
+// @version      1.6.1
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -91,6 +91,7 @@ function siteSC() {
   addGlobalStyles('.potwicon {mix-blend-mode: normal}');
   addGlobalStyles('iframe {mix-blend-mode: screen}');
   addGlobalStyles('.noty_buttons {mix-blend-mode: difference}');
+  addGlobalStyles('.torrentdetails blockquote {background-color: white}');
 }
 
 function siteDoom9() {
