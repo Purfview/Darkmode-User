@@ -72,8 +72,8 @@ function siteKG() {
     addGlobalStyles('table .clear {isolation: isolate}');
     addGlobalStyles('#hidethissmilies {mix-blend-mode: difference}');
     addGlobalStyles('.outer table[width="750"] {background-color: #f9f9f9}');
-    addGlobalStyles('table[cellpadding="10"][bgcolor="red"] {mix-blend-mode: difference}');
     addGlobalStyles('tbody tr td.outer h4 {mix-blend-mode: difference}');
+    addGlobalStyles('table[cellpadding="10"][bgcolor="red"] {mix-blend-mode: difference}');
   }
 }
 
