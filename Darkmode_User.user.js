@@ -74,6 +74,7 @@ function siteKG() {
     addGlobalStyles('.outer table[width="750"] {background-color: #f9f9f9}');
     addGlobalStyles('tbody tr td.outer h4 {mix-blend-mode: difference}');
     addGlobalStyles('table[cellpadding="10"][bgcolor="red"] {mix-blend-mode: difference}');
+    addGlobalStyles('table[width="660"][cellpadding="10"] tbody tr[style="background-color: #008000; color: #fff;"] {mix-blend-mode: difference}');
   }
 }
 
