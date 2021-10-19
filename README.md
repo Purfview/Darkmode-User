@@ -1,3 +1,5 @@
+![alt text](https://i.imgur.com/db6ltj4.png)
+
 # Darkmode User
 Darkmode for the websites.<br> 
 Toggle black/white mode by the widget button (the ball at the bottom-right corner).<br>
