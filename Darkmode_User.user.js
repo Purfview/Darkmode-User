@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.6.3
+// @version      1.7
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -9,8 +9,11 @@
 //
 // @updateURL    https://greasyfork.org/scripts/421332-darkmode-user/code/Darkmode%20User.meta.js
 // @downloadURL  https://greasyfork.org/scripts/421332-darkmode-user/code/Darkmode%20User.user.js
+// @homepage     https://github.com/Purfview/Darkmode-User
+// @supportURL   https://github.com/Purfview/Darkmode-User/issues
 //
 // @require      https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js
+// @require      https://greasyfork.org/scripts/403996-exev/code/ExEv.js?version=808391
 //
 // @include      https://karagarga.in/*
 // @include      https://secret-cinema.pw/*
@@ -42,6 +45,8 @@
 1.5   -   Script wasn't working with Tampermonkey from v1.1. Fixed!
 
 1.6   -   Added Tik site.
+
+1.7   -   New feature: Seamless transitions to darkmode.
 
 ==============================================================================*/
 
@@ -233,4 +238,6 @@ function addDarkmodeWidget() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', addDarkmodeWidget);
+document.events.on('headloaded', () => {
+    addDarkmodeWidget();
+});
