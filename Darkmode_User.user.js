@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.7
+// @version      1.7.1
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -47,6 +47,8 @@
 1.6   -   Added Tik site.
 
 1.7   -   New feature: Seamless transitions to darkmode.
+
+1.7.1 -   Less contrast on the toggle button.
 
 ==============================================================================*/
 
@@ -219,8 +221,8 @@ function addDarkmodeWidget() {
     time: '0.0s',
     mixColor: '#fff',
     backgroundColor: '#fff',
-    buttonColorDark: '#100f2c',
-    buttonColorLight: '#fff',
+    buttonColorDark: '#333333',
+    buttonColorLight: '#b3b3b3',
     saveInCookies: true,
     label: '',
     autoMatchOsTheme: false
