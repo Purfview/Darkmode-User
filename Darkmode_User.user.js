@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.7.1
+// @version      1.7.2
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -49,6 +49,8 @@
 1.7   -   New feature: Seamless transitions to darkmode.
 
 1.7.1 -   Less contrast on the toggle button.
+
+1.7.2 -   Fixed KG.
 
 ==============================================================================*/
 
@@ -240,6 +242,12 @@ function addDarkmodeWidget() {
   }
 }
 
-document.events.on('headloaded', () => {
+if (Boolean(location.href.match('karagarga.in/details.php'))) {
+  document.events.on('bodyloaded', () => {
     addDarkmodeWidget();
-});
+  });
+} else {
+  document.events.on('headloaded', () => {
+    addDarkmodeWidget();
+  });
+}
