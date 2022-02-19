@@ -8,7 +8,7 @@ Employs [Darkmode.js](https://github.com/sandoche/Darkmode.js) by Sandoche Aditt
 
 ## Installing:
 
-[Press here to install](https://greasyfork.org/scripts/421332-darkmode-user/code/Darkmode%20User.user.js)
+[Press here to install](https://greasyfork.org/en/scripts/421332-darkmode-user)
 
 ## Contributing:
 
