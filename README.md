@@ -2,7 +2,7 @@
 
 # Darkmode User
 Darkmode for the websites.<br> 
-Toggle black/white mode by the widget button (the ball at the bottom-right corner).<br>
+Toggle black/white mode with the widget button (the ball at the bottom-right corner).<br>
 Supports [Greasemonkey](https://www.greasespot.net/), [Violentmonkey](https://violentmonkey.github.io/) & [Tampermonkey](https://www.tampermonkey.net/).<br> 
 Employs [Darkmode.js](https://github.com/sandoche/Darkmode.js) by Sandoche Adittane. 
 
