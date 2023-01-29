@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.7.2
+// @version      1.7.3
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -52,6 +52,8 @@
 
 1.7.2 -   Fixed KG.
 
+1.7.3 -   Fixed menus on SC and Greasyfork.
+
 ==============================================================================*/
 
 
@@ -89,7 +91,7 @@ function siteKG() {
 
 function siteSC() {
   addGlobalStyles('img {mix-blend-mode: screen}');
-  addGlobalStyles('#header {mix-blend-mode: screen}');
+  addGlobalStyles('#header {background: white}');
   addGlobalStyles('.colhead_dark {mix-blend-mode: difference}');
   addGlobalStyles('.fronttab {mix-blend-mode: exclusion}');
   addGlobalStyles('.colhead {mix-blend-mode: difference}');
@@ -126,7 +128,7 @@ function siteDoom9() {
 
 function siteGreasyfork() {
   addGlobalStyles('img {mix-blend-mode: screen}');
-  addGlobalStyles('#main-header {mix-blend-mode: difference}');
+  addGlobalStyles('#main-header {background: #66ffff}');
   addGlobalStyles('#site-name a img {mix-blend-mode: normal}');
   addGlobalStyles('#site-name img {mix-blend-mode: normal}');
   addGlobalStyles('#install-area {mix-blend-mode: difference}');
