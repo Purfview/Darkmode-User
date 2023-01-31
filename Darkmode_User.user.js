@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.7.3
+// @version      1.7.4
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -54,6 +54,8 @@
 
 1.7.3 -   Fixed menus on SC and Greasyfork.
 
+1.7.3 -   KG tweaks.
+
 ==============================================================================*/
 
 
@@ -68,15 +70,21 @@ function siteKG() {
       urlPath == '/history.php'    ||
       urlPath == '/friends.php'    ||
       urlPath == '/bookmarks.php'  ||
-      urlPath == '/mytorrents.php' ||
-      urlPath == '/userdetails.php' ) {
+      urlPath == '/mytorrents.php'  ) {
     addGlobalStyles('img {mix-blend-mode: screen}');
     addGlobalStyles('a div img {mix-blend-mode: normal}');
     addGlobalStyles('table .clear {isolation: isolate}');
     addGlobalStyles('table[cellpadding="10"][bgcolor="red"] {mix-blend-mode: difference}');
+    addGlobalStyles('table[width="660"][cellpadding="10"] tbody tr[style="background-color: #008000; color: #fff;"] {mix-blend-mode: difference}');
+    addGlobalStyles('body>table>tbody>tr>td.outer>span {mix-blend-mode: difference}');
+    addGlobalStyles('body>table>tbody>tr>td.embedded {mix-blend-mode: screen}');
+  } else if (urlPath == '/userdetails.php') {
+    addGlobalStyles('table[width="660"][cellpadding="10"] tbody tr[style="background-color: #008000; color: #fff;"] {mix-blend-mode: difference}');
+    addGlobalStyles('body>table>tbody>tr>td.outer>span {mix-blend-mode: difference}');
+    addGlobalStyles('body>table>tbody>tr>td.embedded {mix-blend-mode: screen}');
   } else {
     addGlobalStyles('img {mix-blend-mode: screen}');
-    addGlobalStyles('table .main {isolation: isolate}');
+    //addGlobalStyles('table .main {isolation: isolate}');
     addGlobalStyles('table .main img {mix-blend-mode: difference}');
     addGlobalStyles('.spoiler {isolation: isolate}');
     addGlobalStyles('.spoiler img {mix-blend-mode: difference}');
@@ -86,6 +94,8 @@ function siteKG() {
     addGlobalStyles('tbody tr td.outer h4 {mix-blend-mode: difference}');
     addGlobalStyles('table[cellpadding="10"][bgcolor="red"] {mix-blend-mode: difference}');
     addGlobalStyles('table[width="660"][cellpadding="10"] tbody tr[style="background-color: #008000; color: #fff;"] {mix-blend-mode: difference}');
+    addGlobalStyles('body>table>tbody>tr>td.outer>span {mix-blend-mode: difference}');
+    addGlobalStyles('body>table>tbody>tr>td.embedded {mix-blend-mode: screen}');
   }
 }
 
@@ -248,6 +258,11 @@ if (Boolean(location.href.match('karagarga.in/details.php'))) {
   document.events.on('bodyloaded', () => {
     addDarkmodeWidget();
   });
+} else if (Boolean(location.href.match('karagarga.in/userdetails.php')) ||
+           Boolean(location.href.match('karagarga.in/comment.php'))     ||
+           Boolean(location.href.match('karagarga.in/adsearch.php'))    ||
+           Boolean(location.href.match('karagarga.in/my.php'))           ) {
+  window.addEventListener('DOMContentLoaded', addDarkmodeWidget);
 } else {
   document.events.on('headloaded', () => {
     addDarkmodeWidget();
