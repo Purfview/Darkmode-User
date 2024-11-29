@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.7.6
+// @version      1.8.0
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -59,6 +59,9 @@
 1.7.5 -   KG tweaks.
 
 1.7.6 -   SC tweak.
+
+1.8.0 -   Removed Tik.
+          Possible fix for "sometimes script not loadding".
 
 ==============================================================================*/
 
@@ -147,20 +150,6 @@ function siteGreasyfork() {
   addGlobalStyles('#about-user h3 {color: #bfbfbf}');
 }
 
-function siteTik() {
-  addGlobalStyles('img {mix-blend-mode: screen}');
-  addGlobalStyles('#menu img {mix-blend-mode: normal}');
-  addGlobalStyles('#menu ul li {background-color: black}');
-  addGlobalStyles('#menu ul li a {color: grey}');
-  addGlobalStyles('.bottom_nav ul {background-color: black}');
-  addGlobalStyles('.msn_img_div1 {mix-blend-mode: screen}');
-  addGlobalStyles('.bottom_nav ul a {color: red}');
-  addGlobalStyles('.pbox_table td img[width="20"] {mix-blend-mode: overlay}');
-  addGlobalStyles('.ri_foto_extra {mix-blend-mode: screen}');
-  addGlobalStyles('.thumbos {mix-blend-mode: screen}');
-  addGlobalStyles('embed {mix-blend-mode: screen}');
-}
-
 function siteUnknown() {
   addGlobalStyles('img {mix-blend-mode: screen}');
 }
@@ -195,8 +184,6 @@ function toggleGlobalStyles() {
       siteKG();
     } else if (urlHost == 'secret-cinema.pw') {
       siteSC();
-    } else if (urlHost == 'www.cinematik.net') {
-      siteTik();
     } else if (urlHost == 'forum.doom9.org') {
       siteDoom9();
     } else if (urlHost == 'greasyfork.org') {
@@ -263,7 +250,7 @@ if (Boolean(location.href.match('karagarga.in/details.php'   )) ||
            Boolean(location.href.match('karagarga.in/my.php'))           ) {
   window.addEventListener('DOMContentLoaded', addDarkmodeWidget);
 } else {
-  document.events.on('headloaded', () => {
+  document.events.on('bodyloaded', () => {
     addDarkmodeWidget();
   });
 }
