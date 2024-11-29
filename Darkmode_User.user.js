@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.8.0
+// @version      1.8.1
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -62,6 +62,8 @@
 
 1.8.0 -   Removed Tik.
           Possible fix for "sometimes script not loadding".
+
+1.8.1 -   Improved "1.8.0" fix
 
 ==============================================================================*/
 
@@ -198,6 +200,7 @@ function toggleGlobalStyles() {
 }
 
 function removeBackground() {
+  console.log("Darkmode User (removeBackground): Started.");
   document.getElementsByClassName('darkmode-background')[0].remove();
 }
 
@@ -249,8 +252,13 @@ if (Boolean(location.href.match('karagarga.in/details.php'   )) ||
            Boolean(location.href.match('karagarga.in/adsearch.php'))    ||
            Boolean(location.href.match('karagarga.in/my.php'))           ) {
   window.addEventListener('DOMContentLoaded', addDarkmodeWidget);
-} else {
+
+} else if (Boolean(location.href.match('karagarga.in'))) {
   document.events.on('bodyloaded', () => {
+    addDarkmodeWidget();
+  });
+} else {
+  document.events.on('headloaded', () => {
     addDarkmodeWidget();
   });
 }
