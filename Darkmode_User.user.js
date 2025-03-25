@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.8.1
+// @version      1.8.2
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -64,6 +64,8 @@
           Possible fix for "sometimes script not loadding".
 
 1.8.1 -   Improved "1.8.0" fix
+
+1.8.2 -   doom9 tweak.
 
 ==============================================================================*/
 
@@ -247,7 +249,8 @@ if (Boolean(location.href.match('karagarga.in/details.php'   )) ||
   document.events.on('bodyloaded', () => {
     addDarkmodeWidget();
   });
-} else if (Boolean(location.href.match('karagarga.in/userdetails.php')) ||
+} else if (Boolean(location.href.match('forum.doom9.org'             )) ||
+           Boolean(location.href.match('karagarga.in/userdetails.php')) ||
            Boolean(location.href.match('karagarga.in/comment.php'))     ||
            Boolean(location.href.match('karagarga.in/adsearch.php'))    ||
            Boolean(location.href.match('karagarga.in/my.php'))           ) {
