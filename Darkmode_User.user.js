@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      2.0
+// @version      2.1
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -68,6 +68,8 @@
 2.0   -   Implemented fallback to check if Darkmode.js is loaded. (sometimes it fails on 'bodyloaded' event)
           Removed cinematik from @include
           Removed greasyfork (they implemented own darkmode)
+
+2.1   -   Added 100ms delay to fallback func
 
 ==============================================================================*/
 
@@ -206,12 +208,17 @@ function addBackground() {
 //==============================================================================
 
 async function fallbackFunc() {
+  await sleep(100);
   if (document.querySelector('.darkmode-layer--button')) {
     return;
   } else {
       console.log("Darkmode User (fallbackFunc): Triggered.");
       addDarkmodeWidget();
   }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 //==============================================================================
