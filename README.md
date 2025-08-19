@@ -15,9 +15,7 @@ Employs [Darkmode.js](https://github.com/sandoche/Darkmode.js) by Sandoche Aditt
 Contributions are welcome.
 
 ## The script is currently finetuned for these sites:
-
-Cinematik   
+  
 Doom9    
-GreasyFork  
 Karagarga    
 Secret Cinema
