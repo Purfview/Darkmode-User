@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      2.1
+// @version      2.2
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -70,6 +70,8 @@
           Removed greasyfork (they implemented own darkmode)
 
 2.1   -   Added 100ms delay to fallback func
+
+2.1   -   Increased delay to 300ms
 
 ==============================================================================*/
 
@@ -208,7 +210,7 @@ function addBackground() {
 //==============================================================================
 
 async function fallbackFunc() {
-  await sleep(100);
+  await sleep(300);
   if (document.querySelector('.darkmode-layer--button')) {
     return;
   } else {
