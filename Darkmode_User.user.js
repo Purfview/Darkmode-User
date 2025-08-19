@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      2.2
+// @version      2.3
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -71,7 +71,10 @@
 
 2.1   -   Added 100ms delay to fallback func
 
-2.1   -   Increased delay to 300ms
+2.2   -   Increased delay to 300ms
+
+2.3   -   Reverted 2.1 & 2.2
+          Added check if Darkmode.js is loaded to addDarkmodeWidget func. (problem was that sometimes 'bodyloaded' is triggered after 'DOMContentLoaded')
 
 ==============================================================================*/
 
@@ -209,8 +212,7 @@ function addBackground() {
 //    Fallback
 //==============================================================================
 
-async function fallbackFunc() {
-  await sleep(300);
+function fallbackFunc() {
   if (document.querySelector('.darkmode-layer--button')) {
     return;
   } else {
@@ -219,38 +221,39 @@ async function fallbackFunc() {
   }
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 //==============================================================================
 //    Darkmode.js
 //==============================================================================
 
 function addDarkmodeWidget() {
-  const options = {
-    bottom: '32px',
-    right: '32px',
-    left: 'unset',
-    time: '0.0s',
-    mixColor: '#fff',
-    backgroundColor: '#fff',
-    buttonColorDark: '#333333',
-    buttonColorLight: '#b3b3b3',
-    saveInCookies: true,
-    label: '',
-    autoMatchOsTheme: false
-  };
-  new Darkmode(options).showWidget();
-  // Add func to the widged button to toggle styles on click.
-  document.getElementsByClassName('darkmode-toggle')[0].onclick = function () {toggleGlobalStyles()};
-  // Add styles on the page load.
-  const darkmode = window.localStorage['darkmode'];
-  if (darkmode == "true") {
-    toggleGlobalStyles();
+  if (document.querySelector('.darkmode-layer--button')) {
+    return;
   } else {
-    // Remove custom white background.
-    removeBackground();
+      console.log("Darkmode User (addDarkmodeWidget): Started.");
+      const options = {
+        bottom: '32px',
+        right: '32px',
+        left: 'unset',
+        time: '0.0s',
+        mixColor: '#fff',
+        backgroundColor: '#fff',
+        buttonColorDark: '#333333',
+        buttonColorLight: '#b3b3b3',
+        saveInCookies: true,
+        label: '',
+        autoMatchOsTheme: false
+      };
+      new Darkmode(options).showWidget();
+      // Add func to the widged button to toggle styles on click.
+      document.getElementsByClassName('darkmode-toggle')[0].onclick = function () {toggleGlobalStyles()};
+      // Add styles on the page load.
+      const darkmode = window.localStorage['darkmode'];
+      if (darkmode == "true") {
+        toggleGlobalStyles();
+      } else {
+        // Remove custom white background.
+        removeBackground();
+      }
   }
 }
 
@@ -260,6 +263,7 @@ function addDarkmodeWidget() {
 
 
 document.events.on('bodyloaded', () => {
+  console.log("Darkmode User (bodyloaded): Triggered.");
   addDarkmodeWidget();
 });
 
