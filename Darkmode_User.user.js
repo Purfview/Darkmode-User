@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 //
 // @name         Darkmode User
-// @version      1.8.2
+// @version      2.0
 // @namespace    https://github.com/Purfview/Darkmode-User
 // @description  Darkmode for the websites.
 // @icon         https://i.imgur.com/ZftAaI6.png
@@ -18,8 +18,6 @@
 // @include      https://karagarga.in/*
 // @include      https://secret-cinema.pw/*
 // @include      https://forum.doom9.org/*
-// @include      https://greasyfork.org/*
-// @include      https://www.cinematik.net/*
 //
 // @run-at       document-start
 // @noframes
@@ -66,6 +64,10 @@
 1.8.1 -   Improved "1.8.0" fix
 
 1.8.2 -   doom9 tweak.
+
+2.0   -   Implemented fallback to check if Darkmode.js is loaded. (sometimes it fails on 'bodyloaded' event)
+          Removed cinematik from @include
+          Removed greasyfork (they implemented own darkmode)
 
 ==============================================================================*/
 
@@ -141,19 +143,6 @@ function siteDoom9() {
                    {mix-blend-mode: screen}');
 }
 
-function siteGreasyfork() {
-  addGlobalStyles('img {mix-blend-mode: screen}');
-  addGlobalStyles('#main-header {background: #66ffff}');
-  addGlobalStyles('#site-name a img {mix-blend-mode: normal}');
-  addGlobalStyles('#site-name img {mix-blend-mode: normal}');
-  addGlobalStyles('#install-area {mix-blend-mode: difference}');
-  addGlobalStyles('.script-list-ratings span span {mix-blend-mode: difference}');
-  addGlobalStyles('.current {color: #bfbfbf}');
-  addGlobalStyles('#about-user {background-color: transparent}');
-  addGlobalStyles('#about-user h2 {color: #bfbfbf}');
-  addGlobalStyles('#about-user h3 {color: #bfbfbf}');
-}
-
 function siteUnknown() {
   addGlobalStyles('img {mix-blend-mode: screen}');
 }
@@ -190,8 +179,6 @@ function toggleGlobalStyles() {
       siteSC();
     } else if (urlHost == 'forum.doom9.org') {
       siteDoom9();
-    } else if (urlHost == 'greasyfork.org') {
-      siteGreasyfork();
     } else {
       siteUnknown();
     }
@@ -207,10 +194,24 @@ function removeBackground() {
 }
 
 function addBackground() {
+  console.log("Darkmode User (addBackground): Started.");
   if (document.querySelector('.darkmode-background') !== null) { return; }
   var backgroundDiv = document.createElement('div');
   backgroundDiv.setAttribute('class', 'darkmode-background');
   document.body.insertBefore(backgroundDiv, document.body.firstChild);
+}
+
+//==============================================================================
+//    Fallback
+//==============================================================================
+
+async function fallbackFunc() {
+  if (document.querySelector('.darkmode-layer--button')) {
+    return;
+  } else {
+      console.log("Darkmode User (fallbackFunc): Triggered.");
+      addDarkmodeWidget();
+  }
 }
 
 //==============================================================================
@@ -244,24 +245,14 @@ function addDarkmodeWidget() {
   }
 }
 
-if (Boolean(location.href.match('karagarga.in/details.php'   )) ||
-    Boolean(location.href.match('karagarga.in/reqdetails.php'))  ) {
-  document.events.on('bodyloaded', () => {
-    addDarkmodeWidget();
-  });
-} else if (Boolean(location.href.match('forum.doom9.org'             )) ||
-           Boolean(location.href.match('karagarga.in/userdetails.php')) ||
-           Boolean(location.href.match('karagarga.in/comment.php'))     ||
-           Boolean(location.href.match('karagarga.in/adsearch.php'))    ||
-           Boolean(location.href.match('karagarga.in/my.php'))           ) {
-  window.addEventListener('DOMContentLoaded', addDarkmodeWidget);
+//============================================================================//
+//================================  MAIN  ====================================//
+//============================================================================//
 
-} else if (Boolean(location.href.match('karagarga.in'))) {
-  document.events.on('bodyloaded', () => {
-    addDarkmodeWidget();
-  });
-} else {
-  document.events.on('headloaded', () => {
-    addDarkmodeWidget();
-  });
-}
+
+document.events.on('bodyloaded', () => {
+  addDarkmodeWidget();
+});
+
+// Fallback
+window.addEventListener('DOMContentLoaded', fallbackFunc);
